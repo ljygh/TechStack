@@ -11,17 +11,6 @@
     <title>log in page</title>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
     <script src="${pageContext.request.contextPath}/js/login.js"></script>
-    <%
-        String error = request.getParameter("error");
-        if(error != null && !error.equals("")){
-            System.out.println("error:" + error);
-    %>
-            <script>
-                alert("错误：<%=error%>");
-            </script>
-    <%
-        }
-    %>
 </head>
 <body>
 <div class="titleBlock">
@@ -39,4 +28,34 @@
     <a>还没注册？ 去注册</a>
 </div>
 </body>
+<%-- js放在head中是调用的时候运行，body中是加载页面时运行。--%>
+<%-- js中改动页面中元素要在元素之后，最好放在body之后 --%>
+<%
+    String username = request.getParameter("username");
+    if(username != null){
+        System.out.println("username not null");
+%>
+<script>
+    document.getElementById("username").value = "<%=username%>";
+</script>
+<%
+    }
+    String password = request.getParameter("password");
+    if(password != null){
+        System.out.println("password not null");
+%>
+<script>
+    document.getElementById("password").value = "<%=password%>";
+</script>
+<%
+    }
+    String error = request.getParameter("error");
+    if(error != null && !error.equals("")){
+%>
+<script>
+    alert("错误：<%=error%>");
+</script>
+<%
+    }
+%>
 </html>
