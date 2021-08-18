@@ -11,6 +11,6 @@
     <title>Personal main</title>
 </head>
 <body>
-Personal main
+Hello <%=request.getParameter("username")%>
 </body>
 </html>
