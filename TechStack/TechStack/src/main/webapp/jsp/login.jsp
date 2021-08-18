@@ -21,11 +21,11 @@
     <form method="post" onsubmit="return submitCheck()" action= "<%=request.getContextPath()%>/LoginValidateServlet">
         <input id="username" name="username" placeholder="用户名" size="20" maxlength="20" onchange="nameChange()"><br>
         <p id="nameNotice"></p>
-        <input id="password" name="password" placeholder="密码" size="20" maxlength="20" onchange="pswdChange()"><br>
+        <input id="password" name="password" placeholder="密码" size="20" maxlength="20" onchange="pswdChange()" type="password"><br>
         <p id="pswdNotice"></p>
-        <input class="button" type="submit" size="20" value="提交">
+        <input class="button" type="submit" size="20" value="登录">
     </form>
-    <a>还没注册？ 去注册</a>
+    <a href="<%=request.getContextPath()%>/jsp/signup.jsp">还没注册？ 去注册</a>
 </div>
 </body>
 <%-- js放在head中是调用的时候运行，body中是加载页面时运行。--%>
@@ -33,7 +33,6 @@
 <%
     String username = request.getParameter("username");
     if(username != null){
-        System.out.println("username not null");
 %>
 <script>
     document.getElementById("username").value = "<%=username%>";
@@ -42,7 +41,6 @@
     }
     String password = request.getParameter("password");
     if(password != null){
-        System.out.println("password not null");
 %>
 <script>
     document.getElementById("password").value = "<%=password%>";

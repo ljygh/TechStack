@@ -1,0 +1,39 @@
+body{
+    background-color: aqua;
+}
+img{
+    width: 400px;
+    height: 500px;
+}
+div.image{
+    float: left;
+    margin-left: 300px;
+    margin-top: 0px;
+    width: 400px;
+    height: 500px;
+}
+div.signBlock{
+    margin-left: 700px;
+    margin-top: 125px;
+    width: 400px;
+    height: 500px;
+    background-color: white;
+}
+p{
+    font-size: 50px;
+    font-family: Algerian;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+input{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+span{
+    margin-left: 20px;
+    color: red;
+}
+a{
+    margin-left: 20px;
+    margin-top: 10px;
+}
