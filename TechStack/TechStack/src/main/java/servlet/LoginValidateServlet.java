@@ -24,7 +24,7 @@ public class LoginValidateServlet extends HttpServlet {
         String error = "";
         boolean isValidate = true;
         try {
-            User user = DAOFactory.getUserService().getUser(username);
+            User user = DAOFactory.getUserService().getUserByName(username);
             if(user == null){
                 isValidate = false;
                 error += "用户名不存在";
@@ -37,8 +37,12 @@ public class LoginValidateServlet extends HttpServlet {
                     password = "";
                 }
             }
-            if(isValidate)
-                response.sendRedirect(request.getContextPath() + "/jsp/personalMain.jsp?username=" + username);
+            if(isValidate){
+                HttpSession session = request.getSession();
+                session.setAttribute("userid", user.getUserid());
+                session.setAttribute("username", user.getUsername());
+                response.sendRedirect(request.getContextPath() + "/jsp/personalMain.jsp");
+            }
             else{
                 //使用sendRedirect 有中文参数的情况下要设置编码，不然过滤器也不能转码
                 error = URLEncoder.encode(error, "UTF-8");

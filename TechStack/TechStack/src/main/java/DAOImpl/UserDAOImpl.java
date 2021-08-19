@@ -17,7 +17,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public boolean insert(User user) throws SQLException {
-        if(getUser(user.getUsername()) != null) return false;
+        if(getUserByName(user.getUsername()) != null) return false;
         String sqlString = "insert into user values(null,?,?)";
         PreparedStatement preparedStatement = conn.prepareStatement(sqlString);
         preparedStatement.setString(1, user.getUsername());
@@ -37,7 +37,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public boolean update(String username, User user) throws SQLException {
-        if(getUser(user.getUsername()) != null) return false;
+        if(getUserByName(user.getUsername()) != null) return false;
         String sqlString = "update user set uname = ?, password = ? where uname = ?";
         PreparedStatement preparedStatement = conn.prepareStatement(sqlString);
         preparedStatement.setString(1, user.getUsername());
@@ -48,14 +48,14 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User getUser(String username) throws SQLException {
+    public User getUserByName(String username) throws SQLException {
         String sqlString = "select * from user where uname = ?";
         PreparedStatement preparedStatement = conn.prepareStatement(sqlString);
         preparedStatement.setString(1, username);
         ResultSet resultSet = preparedStatement.executeQuery();
         User user = null;
         while (resultSet.next()){
-            user = new User(resultSet.getString("uname"), resultSet.getString("password"));
+            user = new User(resultSet.getInt("uid"), resultSet.getString("uname"), resultSet.getString("password"));
         }
         return user;
     }

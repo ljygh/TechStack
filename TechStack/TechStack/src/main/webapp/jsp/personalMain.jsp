@@ -11,6 +11,6 @@
     <title>Personal main</title>
 </head>
 <body>
-Hello <%=request.getParameter("username")%>
+Hello <%=session.getAttribute("userid")%> <%=session.getAttribute("username")%>
 </body>
 </html>

@@ -27,14 +27,24 @@ public class SignupServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/jsp/signup.jsp?error=" + error + "&username=" + username + "&password=" + password);
             return;
         }
-        User user = new User(username, password);
         try {
+            if(DAOFactory.getUserService().getUserByName(username) != null){
+                String error = "用户名已存在";
+                error = URLEncoder.encode(error, "UTF-8");
+                username = URLEncoder.encode(username, "UTF-8");
+                password = URLEncoder.encode(password, "UTF-8");
+                response.sendRedirect(request.getContextPath() + "/jsp/signup.jsp?error=" + error + "&username=" + username + "&password=" + password);
+                return;
+            }
+            User user = new User(username, password);
             DAOFactory.getUserService().insert(user);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        username = URLEncoder.encode(username, "UTF-8");
+        password = URLEncoder.encode(password, "UTF-8");
         response.sendRedirect(request.getContextPath() + "/jsp/login.jsp?username=" + username + "&password=" + password);
     }
 }

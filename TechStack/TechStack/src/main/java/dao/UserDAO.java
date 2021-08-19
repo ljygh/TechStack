@@ -12,5 +12,5 @@ public interface UserDAO {
 
     boolean update(String username, User user) throws SQLException;
 
-    User getUser(String username) throws SQLException;
+    User getUserByName(String username) throws SQLException;
 }

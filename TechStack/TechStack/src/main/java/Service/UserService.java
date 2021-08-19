@@ -56,10 +56,10 @@ public class UserService implements UserDAO {
     }
 
     @Override
-    public User getUser(String username) throws SQLException {
+    public User getUserByName(String username) throws SQLException {
         User res;
         try{
-            res = userDAOImpl.getUser(username);
+            res = userDAOImpl.getUserByName(username);
         }catch (SQLException throwables) {
             throw throwables;
         }finally {
