@@ -41,7 +41,7 @@ public class LoginValidateServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("userid", user.getUserid());
                 session.setAttribute("username", user.getUsername());
-                response.sendRedirect(request.getContextPath() + "/jsp/personalMain.jsp");
+                response.sendRedirect(request.getContextPath() + "/jsp/personal.jsp");
             }
             else{
                 //使用sendRedirect 有中文参数的情况下要设置编码，不然过滤器也不能转码

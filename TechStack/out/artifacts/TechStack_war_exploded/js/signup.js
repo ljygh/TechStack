@@ -1,8 +1,10 @@
 function submitCheck(){
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
+    var passwordConfirm = document.getElementById("passwordConfirm").value;
     var nameNotice = document.getElementById("nameNotice");
     var pswdNotice = document.getElementById("pswdNotice");
+    var pswdCnfmNotice = document.getElementById("pswdCnfmNotice");
     var isSubmit = true;
 
     if(username == ""){
@@ -26,6 +28,10 @@ function submitCheck(){
             break;
         }
     }
+    if(passwordConfirm != password){
+        isSubmit = false;
+        pswdCnfmNotice.innerText = "密码不一致";
+    }
     return isSubmit;
 }
 function nameChange(){
@@ -33,4 +39,7 @@ function nameChange(){
 }
 function pswdChange(){
     document.getElementById("pswdNotice").innerText = "";
+}
+function pswdCnfmChange(){
+    document.getElementById("pswdCnfmNotice").innerText = "";
 }

@@ -21,6 +21,8 @@
         <span id="nameNotice"></span><br>
         <input id="password" name="password" placeholder="密码" maxlength="20" type="password" onchange="pswdChange()"><br>
         <span id="pswdNotice"></span><br>
+        <input id="passwordConfirm" name="passwordConfirm" placeholder="确认密码" maxlength="20" type="password" onchange="pswdCnfmChange()"><br>
+        <span id="pswdCnfmNotice"></span><br>
         <input type="submit" value="注册">
     </form>
     <a href="<%=request.getContextPath()%>/jsp/login.jsp">返回</a>
@@ -40,6 +42,7 @@
 %>
 <script>
     document.getElementById("password").value = "<%=password%>";
+    document.getElementById("passwordConfirm").value = "<%=password%>";
 </script>
 <%
     }
