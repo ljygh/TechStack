@@ -10,7 +10,7 @@ public interface UserDAO {
 
     boolean delete(String username) throws SQLException;
 
-    boolean update(String username, User user) throws SQLException;
+    boolean updatePswd(String username, String password) throws SQLException;
 
     User getUserByName(String username) throws SQLException;
 }

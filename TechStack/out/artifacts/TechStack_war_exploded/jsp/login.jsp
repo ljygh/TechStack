@@ -47,11 +47,11 @@
 </script>
 <%
     }
-    String error = request.getParameter("error");
-    if(error != null && !error.equals("")){
+    String message = request.getParameter("message");
+    if(message != null && !message.equals("")){
 %>
 <script>
-    alert("错误：<%=error%>");
+    alert("<%=message%>");
 </script>
 <%
     }

@@ -36,13 +36,12 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public boolean update(String username, User user) throws SQLException {
-        if(getUserByName(user.getUsername()) != null) return false;
-        String sqlString = "update user set uname = ?, password = ? where uname = ?";
+    public boolean updatePswd(String username, String password) throws SQLException {
+        if(getUserByName(username) == null) return false;
+        String sqlString = "update user set password = ? where uname = ?";
         PreparedStatement preparedStatement = conn.prepareStatement(sqlString);
-        preparedStatement.setString(1, user.getUsername());
-        preparedStatement.setString(2, user.getPassword());
-        preparedStatement.setString(3, username);
+        preparedStatement.setString(1, password);
+        preparedStatement.setString(2, username);
         if(preparedStatement.executeUpdate() > 0) return true;
         return false;
     }

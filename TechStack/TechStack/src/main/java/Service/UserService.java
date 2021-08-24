@@ -43,10 +43,10 @@ public class UserService implements UserDAO {
     }
 
     @Override
-    public boolean update(String username, User user) throws SQLException {
+    public boolean updatePswd(String username, String password) throws SQLException {
         boolean res;
         try{
-            res = userDAOImpl.update(username, user);
+            res = userDAOImpl.updatePswd(username, password);
         }catch (SQLException throwables) {
             throw throwables;
         }finally {

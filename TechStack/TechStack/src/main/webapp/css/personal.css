@@ -1,0 +1,31 @@
+body{
+    background-color: aliceblue;
+}
+div.userCenter{
+    margin-left: 2cm;
+    margin-top: 10px;
+    background-color: white;
+    width: 10cm;
+    height: 15cm;
+}
+img{
+    width: 4cm;
+    height: 5cm;
+    margin-left: 2cm;
+}
+input{
+    margin-left: 2cm;
+    margin-top: 0.5cm;
+}
+p{
+    margin-top: 0.5cm;
+    margin-left: 2cm;
+}
+p.notice{
+    margin-top: 0.5cm;
+    margin-left: 2cm;
+    color: red;
+}
+form.changePswd{
+    display: none;
+}

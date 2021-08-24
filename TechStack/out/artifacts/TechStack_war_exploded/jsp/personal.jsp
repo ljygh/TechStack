@@ -9,53 +9,36 @@
 <html>
 <head>
     <title>Personal main</title>
-    <style>
-        body{
-            background-color: aliceblue;
+    <link rel="stylesheet" type="text/css" href="../css/personal.css">
+    <script src="../js/personal.js"></script>
+    <%
+        String message = request.getParameter("message");
+        if(message != null){
+    %>
+            <script>
+                alert("<%=message%>");
+            </script>
+    <%
         }
-        div.userCenter{
-            margin-left: 2cm;
-            margin-top: 10px;
-            background-color: white;
-            width: 10cm;
-            height: 15cm;
-        }
-        img{
-            width: 4cm;
-            height: 5cm;
-            margin-left: 2cm;
-        }
-        input{
-            margin-left: 2cm;
-            margin-top: 0.5cm;
-        }
-        p{
-            margin-top: 0.5cm;
-            margin-left: 2cm;
-        }
-        form{
-            display: none;
-        }
-    </style>
-    <script>
-        function edit(){
-            document.getElementById("form").style.display = "block";
-        }
-        function cancel(){
-            document.getElementById("form").style.display = "none";
-        }
-    </script>
+    %>
 </head>
 <body>
 <div><jsp:include page="menu.jsp"></jsp:include></div>
 <div class="userCenter">
     <img src="<%=request.getContextPath()%>/img/user.jpg"><br>
     <p><%=session.getAttribute("username")%></p>
-    <input type="button" value="编辑资料" onclick="edit()"><br>
-    <form id="form">
-        <input placeholder="用户名"><br>
-        <input placeholder="密码"><br>
-        <input placeholder="确认密码"><br>
+    <form method="post" action="<%=request.getContextPath()%>/LogOutServlet" onsubmit="return logOutConfirm()">
+        <input type="submit" value="退出登录">
+    </form>
+    <form method="post" onsubmit="return closeAccountConfirm()" action="<%=request.getContextPath()%>/CloseAccountServlet">
+        <input type="submit" value="注销账号">
+    </form>
+    <input type="button" value="修改密码" onclick="edit()"><br>
+    <form class="changePswd" id="form" action="<%=request.getContextPath()%>/ChangePasswordServlet" onsubmit="return submitCheck()">
+        <input id="pswd" name="pswd" placeholder="密码" maxlength="20" onchange="pswdChange()" type="password"><br>
+        <p id="pswdNotice" class="notice"></p>
+        <input id="confirmPswd" placeholder="确认密码" maxlength="20" onchange="confirmPswdChange()" type="password"><br>
+        <p id="confirmPswdNotice" class="notice"></p>
         <input type="submit" value="保存"> <input type="button" value="取消" onclick="cancel()">
     </form>
 </div>
