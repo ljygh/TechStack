@@ -1,4 +1,5 @@
-<%--
+<%@ page import="daoFactory.DAOFactory" %>
+<%@ page import="bean.User" %><%--
   Created by IntelliJ IDEA.
   User: ljy
   Date: 8/17/2021
@@ -12,6 +13,8 @@
     <link rel="stylesheet" type="text/css" href="../css/personal.css">
     <script src="../js/personal.js"></script>
     <%
+        User user = (User) request.getAttribute("user");
+        if(user == null) response.sendRedirect(request.getContextPath() + "/ShowAllStackServlet");
         String message = request.getParameter("message");
         if(message != null){
     %>

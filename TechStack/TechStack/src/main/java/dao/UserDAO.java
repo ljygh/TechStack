@@ -13,4 +13,6 @@ public interface UserDAO {
     boolean updatePswd(String username, String password) throws SQLException;
 
     User getUserByName(String username) throws SQLException;
+
+    User getUserWithAllStack(int uid);
 }

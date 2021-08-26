@@ -58,4 +58,9 @@ public class UserDAOImpl implements UserDAO {
         }
         return user;
     }
+
+    @Override
+    public User getUserWithAllStack(int uid) {
+        return null;
+    }
 }
