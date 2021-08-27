@@ -1,5 +1,6 @@
 package DAOImpl;
 
+import bean.Stack;
 import bean.User;
 import dao.UserDAO;
 
@@ -7,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
     private Connection conn;
@@ -57,10 +60,5 @@ public class UserDAOImpl implements UserDAO {
             user = new User(resultSet.getInt("uid"), resultSet.getString("uname"), resultSet.getString("password"));
         }
         return user;
-    }
-
-    @Override
-    public User getUserWithAllStack(int uid) {
-        return null;
     }
 }

@@ -6,7 +6,6 @@ public class Stack {
     private int sid;
     private String sname;
     private String description;
-    List<Tech> techList;
 
     public Stack(int sid, String sname, String description) {
         this.sid = sid;
@@ -41,13 +40,5 @@ public class Stack {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<Tech> getTechList() {
-        return techList;
-    }
-
-    public void setTechList(List<Tech> techList) {
-        this.techList = techList;
     }
 }

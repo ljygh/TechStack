@@ -1,8 +1,10 @@
 package dao;
 
+import bean.Stack;
 import bean.User;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface UserDAO {
 
@@ -13,6 +15,4 @@ public interface UserDAO {
     boolean updatePswd(String username, String password) throws SQLException;
 
     User getUserByName(String username) throws SQLException;
-
-    User getUserWithAllStack(int uid);
 }

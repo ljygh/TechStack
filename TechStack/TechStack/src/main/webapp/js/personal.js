@@ -41,3 +41,9 @@ function logOutConfirm(){
 function closeAccountConfirm(){
     return confirm("确认注销账户？ 这样做您将不能用此账户登录，并且该操作不能测回！");
 }
+function showCreateStackForm(){
+    document.getElementById("createStackForm").style.display = "block";
+}
+function cancelCreateStack(){
+    document.getElementById("createStackForm").style.display = "none";
+}

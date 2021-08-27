@@ -1,5 +1,5 @@
-<%@ page import="daoFactory.DAOFactory" %>
-<%@ page import="bean.User" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="bean.Stack" %><%--
   Created by IntelliJ IDEA.
   User: ljy
   Date: 8/17/2021
@@ -8,13 +8,17 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<%
+    List<Stack> stackList = (List<Stack>) request.getAttribute("stackList");
+    if(stackList == null){
+        response.sendRedirect(request.getContextPath() + "/ShowAllStackServlet");
+    }
+%>
 <head>
     <title>Personal main</title>
     <link rel="stylesheet" type="text/css" href="../css/personal.css">
     <script src="../js/personal.js"></script>
     <%
-        User user = (User) request.getAttribute("user");
-        if(user == null) response.sendRedirect(request.getContextPath() + "/ShowAllStackServlet");
         String message = request.getParameter("message");
         if(message != null){
     %>
@@ -43,6 +47,16 @@
         <input id="confirmPswd" placeholder="确认密码" maxlength="20" onchange="confirmPswdChange()" type="password"><br>
         <p id="confirmPswdNotice" class="notice"></p>
         <input type="submit" value="保存"> <input type="button" value="取消" onclick="cancel()">
+    </form>
+</div>
+<div class="stacks">
+    <form><input name="stackname" placeholder="请输入要搜索的技术栈名称" size="25"> <input type="submit" value="搜索"></form>
+    <input type="button" value="新建技术栈" onclick="showCreateStackForm()"><br>
+    <form id="createStackForm" style="display: none">
+        <input name="sname" placeholder="技术栈名"><br>
+        <textarea name="sDescription" placeholder="技术栈简介" cols="50" rows="2"></textarea><br>
+        <input type="submit" value="新建">
+        <input type="button" value="取消" onclick="cancelCreateStack()">
     </form>
 </div>
 </body>
