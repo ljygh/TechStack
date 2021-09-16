@@ -29,4 +29,30 @@ public class User_StackService implements User_StackDAO {
         }
         return resList;
     }
+
+    @Override
+    public boolean isContainStack(int uid, String sname) throws SQLException {
+        boolean res;
+        try{
+            res = user_stackDAOImpl.isContainStack(uid, sname);
+        } catch (SQLException throwables) {
+            throw throwables;
+        }finally {
+            dbConnection.close();
+        }
+        return res;
+    }
+
+    @Override
+    public boolean insert(int uid, int sid) throws SQLException {
+        boolean res;
+        try{
+            res = user_stackDAOImpl.insert(uid, sid);
+        } catch (SQLException throwables) {
+            throw throwables;
+        }finally {
+            dbConnection.close();
+        }
+        return res;
+    }
 }

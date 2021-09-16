@@ -37,6 +37,6 @@ public class ChangePasswordServlet extends HttpServlet {
             e.printStackTrace();
         }
         message = URLEncoder.encode(message, "UTF-8");
-        response.sendRedirect(request.getContextPath() + "/jsp/personal.jsp?message=" + message);
+        response.sendRedirect(request.getContextPath() + "/ShowAllStackServlet?message=" + message);
     }
 }

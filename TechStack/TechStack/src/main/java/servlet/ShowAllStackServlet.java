@@ -20,11 +20,13 @@ public class ShowAllStackServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        int uid = (Integer) session.getAttribute("udi");
+        int uid = (Integer) session.getAttribute("userid");
         try {
             List<Stack> stackList = DAOFactory.getUser_StackService().getAllStackOfUser(uid);
             request.setAttribute("stackList", stackList);
-            request.getRequestDispatcher(request.getContextPath() + "/jsp/personal.jsp").forward(request, response);
+            //使用getRequestDisPatcher 写目前的相对路径
+            //RequestDispatcher 是可以直接传递参数的
+            request.getRequestDispatcher("jsp/personal.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

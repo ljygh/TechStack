@@ -32,4 +32,25 @@ public class User_StackDAOImpl implements User_StackDAO {
         }
         return stackList;
     }
+
+    @Override
+    public boolean isContainStack(int uid, String sname) throws SQLException {
+        String sql = "select * from stack where sid in (select sid from user_stack where uid = ?) and sname = ?";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setInt(1, uid);
+        statement.setString(2, sname);
+        ResultSet resultSet = statement.executeQuery();
+        if(resultSet.next()) return true;
+        return false;
+    }
+
+    @Override
+    public boolean insert(int uid, int sid) throws SQLException {
+        String sql = "insert into user_stack values(?,?)";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setInt(1, uid);
+        statement.setInt(2, sid);
+        if(statement.executeUpdate() > 0) return true;
+        return false;
+    }
 }

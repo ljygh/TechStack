@@ -21,7 +21,7 @@ public class DAOFactory {
         return new TechService();
     }
 
-    public static StackService getStackService(){
+    public static StackService getStackService() throws SQLException, ClassNotFoundException {
         return new StackService();
     }
 }
