@@ -6,6 +6,7 @@ import dao.User_StackDAO;
 import db.DBConnection;
 
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 public class User_StackService implements User_StackDAO {
@@ -54,5 +55,18 @@ public class User_StackService implements User_StackDAO {
             dbConnection.close();
         }
         return res;
+    }
+
+    @Override
+    public List<Stack> SearchStackByName(int uid, String sname) throws SQLException {
+        List<Stack> stackList = null;
+        try{
+            stackList = user_stackDAOImpl.SearchStackByName(uid, sname);
+        } catch (SQLException throwables) {
+            throw throwables;
+        }finally {
+            dbConnection.close();
+        }
+        return stackList;
     }
 }

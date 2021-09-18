@@ -50,7 +50,7 @@
     </form>
 </div>
 <div class="stacks">
-    <form onsubmit="return searchStackCheck()">
+    <form onsubmit="return searchStackCheck()" action="<%=request.getContextPath()%>/SearchStackServlet">
         <input id="searchName" name="stackname" placeholder="请输入要搜索的技术栈名称" size="25" maxlength="50">
         <input type="submit" value="搜索"><br>
         <p class="notice" id="searchNameNotice"></p>

@@ -38,7 +38,7 @@ public class AddStackServlet extends HttpServlet {
                     return;
                 }
                 DAOFactory.getUser_StackService().insert(uid, sid);
-                response.sendRedirect(request.getContextPath() + "/jsp/stack.jsp");
+                response.sendRedirect(request.getContextPath() + "/jsp/myStack.jsp");
             }
         } catch (SQLException e) {
             e.printStackTrace();

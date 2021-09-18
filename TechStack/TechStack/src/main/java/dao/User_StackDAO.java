@@ -12,4 +12,6 @@ public interface User_StackDAO {
     boolean isContainStack(int uid, String sname) throws SQLException;
 
     boolean insert(int uid, int sid) throws SQLException;
+
+    List<Stack> SearchStackByName(int uid, String sname) throws SQLException;
 }
